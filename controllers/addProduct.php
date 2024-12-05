@@ -1,12 +1,12 @@
 <?php
     require_once "../model/db_connect.php";
+    require_once "../service/uploads.php";
     
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $fileName = $_FILES['thumbnail']['name'];
-        $fileName = rand(0, 99999999).date('Y-m-d-h-i-s').'.'.pathinfo($fileName, PATHINFO_EXTENSION);
-        move_uploaded_file($_FILES['thumbnail']['tmp_name'], '../uploads/'.$fileName); 
-       
+        $file = $_FILES['thumbnail'];
+        $fileName = uploads($file);
+
         $name = $_POST['name'];
         $brand = $_POST['brand'];
         $price = $_POST['price'];

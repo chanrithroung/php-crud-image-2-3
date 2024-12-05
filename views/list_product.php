@@ -65,7 +65,7 @@
                                     </td>
                                     <td>'.$product['created_at'].'</td>
                                     <td>
-                                        <button class="btn btn-primary"><i class="bi bi-pencil-fill"></i> Edit</button>
+                                        <a href="edit_product.php?id='.$product['id'].'" class="btn btn-primary"><i class="bi bi-pencil-fill"></i> Edit</a>
                                         <button class="btn btn-danger"><i class="bi bi-trash"></i> Remove</button>
                                     </td>
                                 </tr>';
