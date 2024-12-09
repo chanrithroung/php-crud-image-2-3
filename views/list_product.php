@@ -120,7 +120,7 @@
       </div>
       <div class="modal-footer">
         <form action="../controllers/delete_product.php" method="post">
-            <input name="remove-id" id="remove-id" type="hidden">
+            <input name="remove-id" id="remove-id" type="">
             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-octagon"></i> Cancel</button>
             <button type="submit" class="btn btn-danger" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal"> <i class="bi bi-trash3"></i> Confirm Delete</button>
         </form>
