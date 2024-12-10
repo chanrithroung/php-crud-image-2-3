@@ -2,17 +2,10 @@
 
     require_once "../model/db_connect.php";
     $pdo = db_connect();
-    if(isset($_GET['search_query'])) {
-        $search_query = $_GET['search_query'];
-        $sql = "SELECT * FROM `products` WHERE `name` LIKE '%$search_query%'";
-        $statement = $pdo->query($sql);
-        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
-    } else {
-        $sql = "SELECT * FROM `products` ORDER BY `id` DESC";
-        $statement = $pdo->query($sql);
-        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
-    }
-
+    $search_query = $_GET['search_query'];
+    $sql = "SELECT * FROM `products` WHERE `name` LIKE '%$search_query%'";
+    $statement = $pdo->query($sql);
+    $products = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -55,13 +48,13 @@
 
             <div class="col">
                 <div class="shadow-lg p-3 mt-3 rounded-pill px-5">
-                    <div class="row  justify-content-between">
+                <div class="row  justify-content-between">
                         <div class="col-3">
                             <h5>Admin</h5>
                         </div>
 
                         <div class="col-4">
-                            <form action="list_product.php" class="d-flex gap-3">
+                            <form action="search.php" class="d-flex gap-3">
                                 <input  class="form-control" name="search_query" type="text" placeholder="Search">
                                 <button class="btn btn-primary"> <i class="bi bi-search"></i> </button>
                             </form>
@@ -69,10 +62,11 @@
                     </div>
                 </div>
                 <div class="container shadow-lg mt-5 p-5 rounded-3">
+                    
                     <?php
-
-                        if (empty($products) && isset($_GET['search_query'])) echo '<div class="alert alert-danger">Not found product name like '.$search_query.' </div>'
+                        if (empty($products)) echo '<div class="alert alert-danger">Not found product name like '.$search_query.' </div>'
                     ?>
+
                     <table class="table table-hover">
                         <thead>
                             <tr>
@@ -87,6 +81,7 @@
                         </thead>
 
                         <tbody>
+                            
                             <?php
                                 foreach ($products as $product)
                                 echo '

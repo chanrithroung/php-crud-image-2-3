@@ -3,7 +3,7 @@
         $HOST = '127.0.0.1';
         $USER = 'root';
         $PASSWORD = '';
-        $SERVER_PORT = '3307';
+        $SERVER_PORT = '3305';
         $DB_NAME = 'php_crud_image';
         
         try {
